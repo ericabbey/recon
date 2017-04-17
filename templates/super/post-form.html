@@ -1,0 +1,62 @@
+{% extends "super/base.html" %}
+{% load static  %}
+{% block sp %} class="active" {% endblock %}
+{% block content %}
+ <!-- main  -->
+<div class="row">
+  <div class="col s12 m12 l10 offset-l1 post-form z-depth-2">
+    <div class="row breadcrumbs">
+      <div class="col s12 m12 l12"><p><a href="{% url 'admin-blog' %}">Manage Post </a>// edit</p></div>
+    </div>
+    <div class="about-info">
+        <h2>Blog Create or Update</h2>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+      <p>{{ form.non_field_errors }}</p>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="title" type="text" class="validate" name="title" value="{{ instance.title }}">
+            <label for="title">Title</label>
+            <p>{{form.title.errors }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <textarea id="message" class="materialize-textarea" name="content" data-content="{{ instance.content }}"></textarea>
+            <label for="message">Your Message</label>
+            <p>{{form.content.errors }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l8 offset-l2 file-field input-field">
+            <div class="btn">
+              <span>Image</span>
+              <input type="file" name="image" value="{{ instance.image.url }}">
+              <p>{{form.image.errors }}</p>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Choose an Image" value="{{ instance.image.name }}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <label for="date">Publish Date </label>
+            <input id="date" type="text" name="publish" value='{{ instance.publish|date:"Y-m-d"}}' placeholder=" {% now "Y-m-d" %}">
+          </div>
+        </div>
+        <div class="row send">
+          <div class="col s6 m6 l3 offset-l2">
+            <input type="submit" value="Done">
+          </div>
+        </div>
+    </form>
+  </div>
+{% endblock %}
+{% block extra-js %}
+<script type="text/javascript" src="{% static 'js/jquery.formatter.min.js' %}"></script>
+  <script type="text/javascript" >
+    var textarea = $(".materialize-textarea")
+    textarea.text(textarea.data("content"))
+  </script>
+{% endblock %}

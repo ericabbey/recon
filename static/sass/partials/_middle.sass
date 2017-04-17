@@ -1,0 +1,300 @@
+.row
+    margin-bottom: 0 !important
+    .col
+        padding: 0 0
+.timer-container
+    background-color: dimgray
+    height: 170px
+    overflow: hidden
+.timer-1
+    overflow: hidden
+    padding: 50px 0 0 0px
+    color: whitesmoke
+    p
+        font:
+            size: 37px
+            style: normal
+            weight: bold
+        border-bottom: 3px solid lawngreen
+        display: block
+        width: 320px
+        margin: 30px auto 0 auto
+
+    small
+        padding: 0 0 0 200px
+        font-size: 17px
+        width: 320px
+        margin: 0 auto
+.timer-2
+    padding: 10px 0 50px
+    margin: 0 auto
+    overflow: hidden
+    .time-handler-figure
+        color: lawngreen
+        font-size: 3.875em
+        font-style: normal
+        margin: 0 auto
+        overflow: hidden
+        th
+            padding: 0 0 0 50px
+
+    .time-handler-word
+        width: 100%
+        font-size: 1.25em
+        color: whitesmoke
+        font-style: normal
+        margin: 0 auto
+        padding: 0 16px 0 34px
+        td
+            padding: 0 0 0 50px
+
+.events-container
+    background-color: gray
+    height: 270px
+    padding: 0
+    overflow: hidden
+    position: relative
+    .img-cont
+        width: 100%
+        overflow: hidden
+        img
+            width: 100%
+            font-size: 20px
+    .img-content
+        background-color: rgba(0,0,0,0.2)
+        color: ghostwhite
+        padding: 10px 10px 5px 10px
+        opacity: .9
+        position: absolute
+        top: 90px
+        width: 320px
+        h4
+            font:
+                weight: bold
+            margin-bottom: 10px
+        p
+            font-size: 20px
+            line-height: 20px
+            margin-top: 10px
+
+.first
+    text-align: center
+    background-color: lawngreen
+    color: #5c6845
+    .index-content
+        margin: 0 0 0 70px
+        padding: 60px 0 0 0
+        text-align: left
+        h1
+            font-weight: bold
+            line-height: 20px
+            font-size: 50px
+            font-style: normal !important
+        h6
+
+.about-one
+    background-color: white
+    text-align: center
+    color: #51ad29
+    h4
+        text-transform: uppercase
+        font:
+            weight: light
+            size: 30px
+    p
+        color: gray
+.cards
+    text-align: center
+    padding: 10px !important
+    .about-img
+        width: 75%
+        max-height: 220px
+        margin: 0 auto
+        background-color: #eaf0de
+        border-radius: 50%
+        overflow: hidden
+        img
+            width: 100%
+    .landscape
+        img
+            width: 200%
+            +position(relative,-40px 120px 0 -40px)
+
+    .about-cont
+        h5
+            color: #51ad29
+            text-transform: uppercase
+            font-weight: light
+        .more
+            color: #51ad29
+            font-size: 20px
+            text-transform: uppercase
+            border-bottom: 1px solid #51ad29
+            display: inline-block
+            margin: 0px
+
+.tracks
+    height: 100px
+
+.blog-container
+    height: 250px
+    overflow: hidden
+    h3
+        margin-bottom: 15px
+    small
+        background-color: lightgreen
+        color: ghostwhite
+        font-size: 16px
+        padding: 2px
+
+    p
+        padding: 10px
+        font-size: 17px
+        margin-top: 5px
+.even
+    color: dimgray
+    padding: 30px
+.odd
+    color: dimgray
+    padding: 30px
+    background-color: ghostwhite
+.prez
+    border: 2px solid  #51ad29
+    border-radius: 4px
+    margin-top: 20px
+    padding: 10px !important
+    color: gray
+    h4
+        text-align: center
+        color:  #51ad29
+
+.footer
+    color: grey
+    margin-top: 20px
+    border-top: 2px dashed #51ad29
+    .foot
+    .text-purple
+        &:hover
+            color: #7c4dff !important
+    .text-orange
+        &:hover
+            color: #ffab40 !important
+    .text-blue
+        &:hover
+            color:  #0091ea !important
+    .icon
+        svg
+            border-radius: 50%
+            border: 1px solid gray
+            transition: all 0.5s
+            path
+                transform: translate(24%, 20%)
+    .fb
+        svg
+            path
+                fill: #3a5fe1
+            &:hover
+                background: #3a5fe1
+                border: 0px
+                path
+                    fill: white
+        svg + span
+            color: #3a5fe1
+
+    .tw
+        svg
+            path
+                fill: #3aace1
+            &:hover
+                background: #3aace1
+                border: 0px
+                path
+                    fill: white
+        svg + span
+            color: #3aace1
+    .in
+        svg
+            path
+                fill: #e13ac7
+            &:hover
+                background: #e13ac7
+                border: 0px
+                path
+                    fill: white
+        svg + span
+            color: #e13ac7
+    .gm
+        svg
+            path
+                fill: #e60d0d
+            &:hover
+                background: #e60d0d
+                border: 0px
+                path
+                    fill: white
+        svg + span
+            color: #e60d0d
+    ul
+        li
+            font-size: 17px
+            a
+                color: #989898
+                &:hover
+                    color: darken(#989898, 20%)
+.submit
+    display: none
+
+.tracks
+    margin-top: 30px
+    height: 300px
+    h3
+        color: #51ad29
+    .player
+        height: 40px
+        background-color: #51ad29
+        position: relative
+        .music
+            display: none
+        .progressbar_slide
+            width: 90%
+            height: 7px
+            background-color: #b4f0c8
+            .progressbar_range
+                background-color: white
+                height: 100%
+                width: 0px
+                border: 1px solid #b4f0c8
+
+        #timeleft
+            display: inline
+            margin-top: 0
+            position: absolute
+            top: -5px
+            color: #d3d3da
+            right: 5px
+            font-size: 15px
+
+        .controls
+            width: 100%
+            padding-top: 7px
+            box-sizing: border-box
+            height: 30px
+            display: flex
+            justify-content: space-around
+            #plays_btn, #prev_btn, #next_btn, #volume_btn
+                cursor: pointer
+                width: 26px
+                transition: all 0.2s
+                fill: #b4f0c8
+            #pause_btn
+                display: none
+
+
+
+    .info
+        height: 40px
+        background-color: #f8f8ff
+        p
+            margin: 0
+            padding: 5px 10px
+            font-size: 20px

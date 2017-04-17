@@ -1,0 +1,83 @@
+{% extends "super/base.html" %}
+{% load static  %}
+{% block se %} class="active" {% endblock %}
+{% block content %}
+ <!-- main  -->
+ <div class="row">
+  <div class="col s12 m12 l10 offset-l1 post-form z-depth-2">
+    <div class="row breadcrumbs">
+      <div class="col s12 m12 l12"><p><a href="{% url 'admin-event' %}">Manage Event</a> // Add</p></div>
+    </div>
+    <div class="about-info">
+        <h2>Event Add or Update</h2>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="title" type="text" class="validate" name="title" value="{{instance.title}}">
+            <label for="title">Event Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="organizer" type="text" class="validate" name="organizer" value="{{ instance.organizer}}">
+            <label for="organizer">Event Organiser</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="venue" type="text" class="validate" name="venue" value="{{ instance.venue}}">
+            <label for="venue">Event Venue</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="theme" type="text" class="validate" name="theme" value="{{ instance.theme}}">
+            <label for="theme">Event Theme</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m7 l8 offset-l2">
+            <input id="datetime" type="text" name="date" value="{{ instance.date|date:'Y-m-d H:i'}}" placeholder="{% now 'Y-m-d H:i' %}" class="validate">
+            <label for="datetime">Event Date &amp; time</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l8 offset-l2 file-field input-field">
+            <div class="btn">
+              <span>Cover Image</span>
+              <input type="file" name="cover" value="{{ instance.cover.url }}">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Choose an Image" name="cover" value="{{ instance.cover.name }}">
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col s12 m12 l8 offset-l2 file-field input-field">
+            <div class="btn">
+              <span>Map Image</span>
+              <input type="file"  name="map_image" value="{{ instance.map_image.url }}">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Choose an Image"  name="map_image" value="{{ instance.map_image.name }}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="map_url" type="url" name="map_url" value="{{ instance.map_url }}" class="validate">
+            <label for="map_url">Map Url</label>
+          </div>
+        </div>
+        <div class="row send">
+          <div class="col s6 m6 l3 offset-l2 post-save">
+            <input type="submit" value="Save">
+          </div>
+        </div>
+    </form>
+  </div>
+{% endblock %}
+{% block extra-js %}
+  <script type="text/javascript" src="{% static 'js/jquery.formatter.min.js' %}"></script>
+{% endblock %}

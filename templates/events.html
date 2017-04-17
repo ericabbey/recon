@@ -1,0 +1,50 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block extra_css %}
+      <link rel="stylesheet" href="{% static 'css/fullcalendar.min.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="banner parallax-container">
+      <h1>Coming Events</h1>
+      <div class="parallax">
+          <img class="" src="{% static 'images/nature.jpg' %}" alt="">
+      </div>
+  </div>
+  <div class="row">
+      <div class="col s12 m8 offset-m2 cal">
+        <div id='calendar'></div>
+      </div>
+  </div>
+{% endblock %}
+{% block extra-js %}
+<script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/fullcalendar.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+<script type="text/javascript">
+
+    var calendar = document.getElementById('calendar');
+    event1 = $("#calendar").attr("data-event1")
+    if(calendar){
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+            eventClick: true,
+            events: [
+              {% for obj in events %}
+                {
+                    title: "{{ obj.title }}" ,
+                    start: "{{ obj.date|date:'Y-m-d'}}",
+                    url: "{{ obj.get_absolute_url }}"
+                },
+                {% endfor %}
+            ]
+
+
+        })
+    }
+</script>
+{% endblock %}

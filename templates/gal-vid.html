@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block inner_css %}
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="banner parallax-container">
+      <h1>Videos</h1>
+      <div class="parallax">
+          <img class="" src="{% static 'images/nature.jpg' %}" alt="">
+      </div>
+  </div>
+    <div class="row">
+        <div class="col s12 m12 l12 breadcrumbs">
+            <p><span>Gallery</span>//<span>Videos</span></p>
+        </div>
+    </div>
+    <div class="row">
+      {% for obj in media  %}
+        <div class="col s12 m4 l3 gal-cont">
+            <div class="gal">
+                <video src="{{ obj.source.url }}"></video>
+            </div>
+            <div class="detail">
+              <div class="detail-inner">
+                <div class="detail-in">
+                  <h2>{{ obj.artist }}</h2>
+                  <h3>{{ obj.title }}</h3>
+                </div>
+              </div>
+            </div>
+            <a href="#!"><div class="overlay" id="source" data-src="{{ obj.source.url }}" data-author="{{ obj.artist }}" data-title="{{ obj.title}}">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+                <path fill="#ffffff" d="M8 0c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zM8 14.5c-3.59 0-6.5-2.91-6.5-6.5s2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5-2.91 6.5-6.5 6.5zM6 4.5l6 3.5-6 3.5z"></path>
+              </svg>
+              </div>
+            </a>
+        </div>
+      {% endfor %}
+        <div class="divider"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m10 offset-m2  l10 offset-l2 player-cont">
+              <div class="player">
+                <video id="video" src="images/road.mp4" controls="controls"></video>
+                 <div class="title"><p></p></div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     <div class="row">
+            <div class="col s12 m12 l12 foot">
+                <p>Check out some <a href="{% url 'gallery:pictures' %}">pictures</a> or <a href="{% url 'gallery:audio' %}">audio</a></p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+  {% block  extra-js %}
+  <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+  {% endblock %}

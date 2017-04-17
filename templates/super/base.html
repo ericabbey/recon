@@ -1,0 +1,82 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <meta name="description" content="Reconcilers International">
+    <title>Reconcilers International</title>
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fonts/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    {% block extra-css %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Navbar section -->
+    <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo logo"><img src="{% static 'images/nav1.png' %}" alt=""><span>Reconcilers International</span></a>
+            <a href="#" data-activates="mobile-view" class="button-collapse">
+              <i class="hamburger"></i>
+              <i class="hamburger one"></i>
+              <i class="hamburger two"></i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'home' %}">Home</a><div></div></li>
+              <li><a href="{% url 'about' %}">About-Us</a><div></div></li>
+              <li><a href="{% url 'events:home'%}">Events</a><div></div></li>
+              <li><a href="{% url 'blog:list'%}">Blogs</a><div></div></li>
+              <li><a href="{% url 'gallery:pictures'%}">Gallery</a><div></div></li>
+              <li class="cus-btn"><a href="payment.php">Donate</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-view">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About-Us</a></li>
+              <li><a href="{% url 'events:home'%}">Events</a></li>
+              <li><a href="{% url 'blog:list'%}">Blogs</a></li>
+              <li><a href="{% url 'gallery:pictures'%}">Gallery</a></li>
+              <li class="cus-btn"><a href="payment.php">Donate</a></li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+  <!-- Navbar Section end -->
+ <!-- Admin-Nav -->
+ <div class="admin-info">
+    <nav>
+      <ul class="ad-info">
+        <li class="admin-img">
+          <img src="{% static '/images/passport.png' %}" alt="">
+        </li>
+        <li class="admin-name"><span>{{request.user.username|capfirst}}</span></li>
+      </ul>
+    </nav>
+ </div>
+ <div class="admin-nav">
+  <nav>
+    <a href="#!" class="dashboard"><span><i class="fa fa-dashboard"></i></span><span>Admin Panel</span></a>
+    <ul>
+      <li {% block si %}{% endblock %}><a href="{% url 'super:index'%}"><span class="icon"><i class="fa fa-home"></i></span><span class="icon-text">Home</span></a></li>
+      <li {% block sp %}{% endblock %}><a href="{% url 'admin-blog' %}"><span class="icon"><i class="fa fa-newspaper-o"></i></span><span class="icon-text">Manage Post</span></a></li>
+      <li {% block se %}{% endblock %}><a href="{% url 'admin-event' %}"><span class="icon"><i class="fa fa-calendar"></i></span><span class="icon-text">Manage Events</span></a></li>
+      <li {% block sm %}{% endblock %}><a href="{% url 'admin-media' %}"><span class="icon"><i class="fa fa-camera"></i></span><span class="icon-text">Add Media</span></a></li>
+      <li><a href="{% url 'super:logout' %}"><span class="icon"><i class="fa fa-power-off"></i></span><span class="icon-text">Logout</span></a></li>
+    </ul>
+  </nav>
+ </div>
+ <!-- End Admin-Nav -->
+ {% block content %}
+
+ {% endblock %}
+</div>
+<!-- end main -->
+  <script type="text/javascript" src="{% static '/js/jquery-1.11.2.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/jquery.nicescroll.min.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/functions.js' %}"></script>
+  {% block extra-js %}
+  {% endblock %}
+</body>
+</html>

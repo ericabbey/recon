@@ -1,0 +1,233 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+  <!-- Slider section -->
+    <div class="slider-container">
+        <!-- middle slide -->
+        <div id="cycle" class="slideshow">
+            <div class="slide">
+                <img src="{% static 'images/wallpaper.jpg' %}" alt="">
+                <div class="caption">
+                  <div class="caption-cont">
+                    <h3>The Lord is Awesome</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nihil veniam nulla voluptates, quasi error, aliquid repellendus sunt architecto vel!</p>
+                  </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/nature.jpg' %}" alt="">
+                <div class="caption">
+                  <div class="caption-cont">
+                    <h3>We are Reconcilers </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nihil veniam nulla voluptates, quasi error, aliquid repellendus sunt architecto vel!</p>
+                  </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/flower1.jpg' %}" style="width: 120%"alt="">
+                <div class="caption">
+                  <div class="caption-cont">
+                    <h3>I am Cyberick</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nihil veniam nulla voluptates, quasi error, aliquid repellendus sunt architecto vel!</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slide-controls">
+        <div class="slide-next"><img src="{% static 'images/next.png' %}" alt=""></div>
+        <div class="slide-prev"><img src="{% static 'images/prev.png' %}" alt=""></div>
+    </div>
+  <!--Slider end  -->
+  <!-- Countdown timer -->
+  <div class="row">
+        <div class="col l6 s12 timer-container timer-1 ">
+          <p class="">Reconcilers 2017</p>
+          <small class="">theme</small>
+        </div>
+        <div class="col l6 s12 timer-container timer-2">
+                    <table style="width: 100%">
+                        <tr class="time-handler-figure">
+                            <th id="days">00</th>
+                            <th id="hours">00</th>
+                            <th id="minutes">00</th>
+                            <th id="seconds">00</th>
+                        </tr>
+                        <tr  class="time-handler-word">
+                            <td>Days</td>
+                            <td>Hours</td>
+                            <td>Minutes</td>
+                            <td>Second</td>
+                        </tr>
+                    </table>
+                    <script type="text/javascript" src="{% static 'js/countdown.js' %}"></script>
+                    <script>
+                        countdown('05/26/2017 06:30:00 PM', ['days','hours', 'minutes', 'seconds'], function(){
+                           console.log('finished!!');
+                        });
+                    </script>
+        </div>
+      </div>
+    <!-- End Countdown  -->
+    <!--  about-us -->
+          <div class="row">
+            <div class="col s12 about-one">
+              <h4>What we do</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam laborum veniam, excepturi modi sequi, necessitatibus!</p>
+            </div>
+          </div>
+        <div class="container">
+          <div class="row">
+            <div class="col l4 m8 offset-m2 s12 cards">
+              <div class="about-img landscape">
+                <img src="{% static 'images/sing.png' %}" alt="">
+              </div>
+              <div class="about-cont ">
+                <h5>Our MInistry</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque sequi ex repellendus   tenetur magnam provident voluptatem quam pariatur velit officia.</p>
+                <p class="more">know more +</p>
+              </div>
+            </div>
+            <div class="col l4 m8 offset-m2 s12 cards">
+              <div class="about-img">
+                <img src="{% static 'images/passport.png' %}" alt="">
+              </div>
+              <div class="about-cont">
+                <h5>Our Leaders</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque sequi ex repellendus   tenetur magnam provident voluptatem quam pariatur velit officia.</p>
+                <p class="more">know more +</p>
+              </div>
+            </div>
+            <div class="col l4 m8 offset-m2 s12 cards">
+              <div class="about-img landscape">
+                <img src="{% static 'images/1.jpg' %}" alt="">
+              </div>
+              <div class="about-cont">
+                <h5>Our purpose</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque sequi ex repellendus   tenetur magnam provident voluptatem quam pariatur velit officia.</p>
+                <p class="more">know more +</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- end about -->
+    <!-- Event container -->
+    <div class="row">
+        <div class="col s12 m4 l3 events-container first">
+          <div class="container index-content">
+            <h6>Up coming</h6>
+            <h1>Events</h1>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 events-container">
+            <div class="img-cont">
+                <img src="{% static 'images/2.jpg' %}" class="second" alt=""/>
+            </div>
+            <div class="img-content">
+             <h4>Young and Free</h4>
+              <p>September 2nd, 2017</p>
+            </div>
+        </div>
+        <div class="col s12 m4 l3 events-container">
+          <div class="img-cont">
+              <img src="{% static 'images/3.jpg' %}" class="second" alt=""/>
+          </div>
+          <div class="img-content">
+            <h4>Touching Lives</h4>
+            <p>September 2nd, 2016</p>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 events-container">
+          <div class="img-cont">
+              <img src="{% static 'images/4.jpg' %}" class="second" alt=""/>
+          </div>
+          <div class="img-content">
+            <h4>Touching Lives</h4>
+            <p>September 2nd, 2016</p>
+          </div>
+        </div>
+      </div>
+      <!-- end events -->
+      <!-- audio  -->
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m2 tracks">
+          <h3>A powerfull message </h3>
+            <audio src="{% static 'images/busy_signal.mp3' %}" id="audio" class="music"></audio>
+            <div class="player z-depth-3">
+              <div class="progressbar_slide"><div class="progressbar_range"></div></div>
+              <p id="timeleft">00:00</p>
+              <div class="controls">
+                  <svg id="prev_btn" viewBox="0 0 24.5 23.6">
+                    <polygon points="0,11.8 13.5,0 13.5,10.7 24.5,0 24.5,23.6 13.5,12.9 13.5,23.6 "/>
+                  </svg>
+
+                <svg id="plays_btn" viewBox="0 0 24.5 30.9">
+                  <g id="play_btn">
+                    <path d="M0,30.9L0,0l24.5,15.4L0,30.9z"/>
+                  </g>
+                  <g id="pause_btn">
+                    <rect x="0" y="0" width="8.2" height="30.9"/>
+                    <rect x="16.2" y="0" width="8.2" height="30.9"/>
+                  </g>
+                </svg>
+
+
+                <svg id="next_btn" viewBox="0 0 24.5 23.6">
+                  <polygon points="25,11.8 11.5,0 11.5,10.7 0.5,0 0.5,23.6 11.5,12.9 11.5,23.6 "/>
+                </svg>
+
+                <svg id="volume_btn" style="display: none;" viewBox="0 0 23 23">
+                  <path d="M17.5,6.6v9.9L11.4,13H5.5v-3h6L17.5,6.6z M10.7,7H2.5v9h8.2l9.8,5.3V1.2L10.7,7z"/>
+                </svg>
+                <svg id="shuffle_btn" style="display: none;"></svg>
+              </div>
+            </div>
+            <div class="info">
+              <p>Busy Signal: Praise and worship</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end -->
+      <!-- Blogs -->
+      <div class="row">
+        <div class="col s12 m3 l3 blog-container first">
+          <div class="container index-content">
+            <h6>Latest</h6>
+            <h1>Blogs</h1>
+          </div>
+        </div>
+        <div class="col s12 m4 l3 blog-container odd even1" data-wow-delay="">
+          <small>23rd February 2017</small>
+          <h3>Musto Gusto</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae assumenda nam magnam, ipsam iste consequatur corrupti harum iusto quis aliquam? Eligendi omnis repellat minus aspernatur nisi laudantium obcaecati</p>
+        </div>
+        <div class="col s12 m4 l3 blog-container even even1" data-wow-delay="">
+          <small>23rd February 2017</small>
+          <h3>Musto Gusto</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae assumenda nam magnam, ipsam iste consequatur corrupti harum iusto quis aliquam? Eligendi omnis repellat minus aspernatur nisi laudantium obcaecati</p>
+        </div>
+        <div class="col s12 m4 l3 blog-container odd even1" data-wow-delay="">
+          <small>23rd February 2017</small>
+          <h3>Musto Gusto</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae assumenda nam magnam, ipsam iste consequatur corrupti harum iusto quis aliquam? Eligendi omnis repellat minus aspernatur nisi laudantium obcaecati</p>
+        </div>
+      </div>
+      <!-- end blog -->
+      <!-- prez -->
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m10 offset-m1 prez">
+            <h4>From the president</h4>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum libero officia eius, alias consequatur non voluptates sed voluptate dolorem incidunt optio tempora quos laudantium rem qui nobis sit nesciunt animi accusantium, hic doloremque quas quam explicabo eum fugiat! Non consectetur aliquid tempora minus, saepe error, commodi nobis placeat magni enim sed consequatur obcaecati quaerat cum. Recusandae nemo, quae libero corporis ex cupiditate? Autem a, quasi! Dicta enim aut, porro explicabo culpa dignissimos facilis quia rem non cumque soluta iste quo sunt, assumenda vel, tenetur. Ad culpa earum, iusto eaque repellendus! Nesciunt ad laboriosam nisi! Dolor illum nam esse excepturi facere.
+          </div>
+        </div>
+      </div>
+      <!-- end prez -->
+      
+    {% endblock %}
+    {% block extra-js %}
+    <script type="text/javascript" src="{% static 'js/jquery.cycle2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/player.js' %}"></script>
+    {% endblock %}

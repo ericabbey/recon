@@ -1,0 +1,61 @@
+
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+  <div class="banner z-depth-2 events">
+      <h1>Coming Events</h1>
+      <div class="parallax">
+          <img class="" src="{{ instance.cover.url }}" alt="">
+      </div>
+  </div>
+  <div class="row">
+      <div class="col s12 m8 offset-m2 event">
+            <div class="event-detail">
+              <div class="event-head">
+                <h4>{{ instance.organizer }}</h4>
+                <p>presents</p>
+                <h1>{{ instance.title }}</h1>
+              </div>
+              <div class="event-info">
+              <div class="divider"></div>
+                <div class="theme">
+                  <p><span>Theme: </span> {{ instance.theme }}</p>
+                </div>
+                <div class="ev-date">
+                  <p><span>Date: </span>{{ instance.date|date:"jS F Y"}}</p>
+                </div>
+                <div class="time">
+                  <p><span>Time: </span>{{ instance.date|date:"h: i A e "}}</p>
+                </div>
+              <div class="divider"></div>
+                <div class="location">
+                  <div class="venue">
+                    <p><span>We are live at: </span>{{ instance.venue }}</p>
+                    <div class="row">
+                      <div class="col s12">
+                        <ul class="tabs">
+                          <li class="tab col s3"><a class="active" href="#drawn">Drawn map</a></li>
+                          <li class="tab col s3"><a href="#live">Live Map</a></li>
+                        </ul>
+                      </div>
+                      <div id="drawn" class="col s12">
+                        <div class="event-map">
+                          <img src="{{ instance.map_image.url }}" alt="">
+                        </div>
+                      </div>
+                      <div id="live" class="col s12">
+                        <div class="event-map">
+                          <embed src="google.maps.com" type="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+  {% endblock %}
+  {% block extra-js %}
+  <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+  {% endblock %}

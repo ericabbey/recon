@@ -1,0 +1,50 @@
+{% extends "super/base.html" %}
+{% load static  %}
+{% block sm %} class="active" {% endblock %}
+{% block content %}
+ <div class="row">
+  <div class="col s12 m12 l10 offset-l1 post-form z-depth-2">
+    <div class="row breadcrumbs">
+      <div class="col s12 m12 l12"><p><a href="{% url 'admin-media' %}">Manage Event </a>// Add</p></div>
+    </div>
+    <div class="about-info">
+        <h2>Add or Update Media</h2>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="title" type="text" class="validate" name="title" value="{{instance.title}}">
+            <label for="title">Media Title</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="title" type="text" class="validate" name="artist" value="{{instance.artist }}">
+            <label for="title">Artist</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l8 offset-l2 file-field input-field">
+            <div class="btn">
+              <span>Media source</span>
+              <input type="file" name="source" value="{{instance.source.url }}">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Choose an Image" value="{{instance.source.name }}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l8 offset-l2">
+            <input id="title" type="text" class="validate" name="url" value="{{instance.url }}" disabled="disabled" style="cursor: not-allowed;">
+            <label for="title">Url</label>
+          </div>
+        </div>
+        <div class="row send">
+          <div class="col s6 m6 l3 offset-l2 post-save">
+            <input type="submit" value="Save">
+          </div>
+        </div>
+    </form>
+  </div>
+{% endblock %}

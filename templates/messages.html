@@ -1,0 +1,7 @@
+{% for obj in chat %}
+  {% if obj.sender == request.user %}
+    <li class="right-msg">{{ obj.message }}</li>
+    {% else%}
+    <li class="left-msg"><div class="sender" data-pk={{obj.sender.id}}>{{ obj.sender}}</div>{{ obj.message }}</li>
+  {% endif %}
+{% endfor %}

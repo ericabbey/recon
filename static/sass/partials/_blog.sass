@@ -1,0 +1,168 @@
+.row
+  .blog
+    padding: 0 0.75rem
+.parallax-container
+  height: 400px
+  h1
+    color: white
+    text-align: center
+    transform: translate(0%, 200%)
+    margin: 0 auto
+    width: 80%
+    padding-bottom: 5px
+    border-bottom: 1px solid white
+
+.card
+  .bg-date
+    position: absolute
+    z-index: 10
+    width: 70px
+    h3
+      margin: 5px
+    p
+      margin: 5px
+      font-size: 17px
+    background-color: #51ad29
+    color: white
+  .card-action
+    a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating)
+      color:  #51ad29 !important
+      margin-right: 24px
+      transition: color .3s ease
+      text-transform: uppercase
+    span
+      margin-left: 10px
+      color: grey
+
+.blog-content
+  margin-top: 30px
+  .blog-header
+    height: 300px
+    overflow: hidden
+    .blog-date
+      height: 300px
+      padding: 20px
+      float: left
+      background-color: lawngreen
+      color: #5e7d68
+    .blog-img
+      display: inline-block
+      width: 720px
+      height: 300px
+      overflow: hidden
+      img
+        width: 100%
+  .blog-main
+    h5
+      font-size: 30px
+      color: #51ad29
+    p
+      font-size: 17px
+      color: grey
+  .blog-info
+    span
+      color: grey
+      margin-right: 40px
+  .blog-extra
+    .comment-box
+      width: 90%
+      height: 200px
+      border: 1px solid #e0e0e0
+      border-bottom: 3px double #e0e0e0
+      border-radius: 3px
+      margin: 10px
+      .commenter-info
+        +clearfix()
+        .commenter-img
+          +size(60px)
+          overflow: hidden
+          margin: 5px
+          display: inline-block
+          img
+            width: 150%
+        span
+          color: #51ad29
+          font-size: 22px
+          position: relative
+          top: -20px
+        .time
+          font-size: 13px
+          float: right
+          top: 30px
+          color: grey
+      .commenter-main
+        +clearfix()
+        p
+          padding: 10px
+          color: grey
+    .comment-in
+      +clearfix()
+      .face
+        background-color: #004bff
+      .goog
+        background-color: #f21717
+      h4
+        display: inline-block
+        color: grey
+      p
+        display: inline-block
+        margin-left: 40%
+        color: grey
+      div:not(.divider)
+        font-weight: bold
+        width: 75px
+        height: 40px
+        display: inline-block
+        p
+          margin: 10px
+          color: white
+      .textbox
+        margin-top: 10px
+        display: block !important
+        width: 90% !important
+        textarea
+          width: 90%
+          height: 100px
+          border: 1px solid #e0e0e0
+      .submit
+        width: 100% !important
+        text-align: center
+        input
+          background-color: #0089ec
+          border: none
+          color: ghostwhite
+          display: block
+          position: relative
+          top: 70px
+          padding: 7px 20px
+          margin: 0 auto 20px auto
+
+[type="checkbox"]
+  &+label:before, &:not(.filled-in)+label:after
+    content: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 18px
+    height: 18px
+    z-index: 0
+    border: 2px solid #5a5a5a
+    border-radius: 1px
+    margin-top: 2px
+    transition: .2s
+.extra-label
+  position: static !important
+  svg
+    path
+      fill: #9e9e9e
+[type="checkbox"]:checked
+  &+label
+    position: static !important
+    svg
+      path
+        fill: #51ad29
+
+.like
+  cursor: pointer
+.count
+  margin: 0 !important

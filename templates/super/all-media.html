@@ -1,0 +1,58 @@
+{% extends "super/base.html" %}
+{% block content%}
+<div class="row">
+  <div class="col s12 m12 l10 offset-l1" style="text-align: center; margin-bottom: 10px">
+    {% for message in messages %}
+      <div class="" style="
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      display: inline-block">
+        {{message}}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12 l10 offset-l1 z-depth-2 al-post">
+    <div class="al-post-head" style="display: flex">
+      <p>All media files </p>
+      <p>Total: {{ media.count }}</p>
+      <p ><a href="{% url 'media-create' %}" class="recon-btn"><div class="th-icon">Add</div></a></p>
+    </div>
+    <div class="al-events gal">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Type</th>
+                <th>Source</th>
+                <th>...</th>
+            </tr>
+            {% for obj in media  %}
+            <tr>
+                <td>{{ obj.title }}</td>
+                <td>{{ obj.artist }}</td>
+                <td>{{ obj.type }}</td>
+                <td>{{ obj.source }}</td>
+                <td><a href="{{ obj.get_edit_url }}"><span class="fa fa-pencil"></span> </a></td>
+                <td><a href="#post{{obj.id}}"><span class="fa fa-trash"></span></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% for obj in media %}
+        <div id="post{{obj.id}}" class="modal">
+          <div class="modal-content">
+            <h4>Are you sure you want to delete this post</h4>
+            <p>Note: Deleted post are not recoverable</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-grey btn-flat">Cancel</a>
+            <a href="{{ obj.get_delete_url }}" class=" modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
+          </div>
+        </div>
+          {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

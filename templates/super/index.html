@@ -1,0 +1,126 @@
+{% extends "super/base.html" %}
+{% load static  %}
+{% load query %}
+{% block extra-css %}
+  <link rel="" href="{% static '/css/zabuto_calendar.css' %}">
+{% endblock %}
+{% block si %} class="active" {% endblock %}
+{% block content %}
+ <!-- main  -->
+ <div class="row big-info">
+   <div class="col s12 m12 l9 in-box">
+    <div class="row">
+      <div class="col m4 s12 in-box-inner">
+          <div><i class="fa fa-pencil-square-o"></i></div>
+          <p>+{{ post.count }}</p>
+          <div class="in-box-bar"></div>
+      </div>
+      <div class="col m4 s12 in-box-inner">
+          <div><i class="fa fa-comment-o"></i></div>
+          <p>+{% if not comment.count %}0{% endif %}{{ comment.count }}</p>
+          <div class="in-box-bar"></div>
+      </div>
+      <div class="col m4 s12 in-box-inner">
+          <div><i class="fa fa-thumbs-o-up"></i></div>
+          <p>+{{ like.count }}</p>
+          <div class="in-box-bar"></div>
+      </div>
+    </div>
+   </div>
+ </div>
+ <div class="row">
+    <div class="col s12 m12 l9 offset-l2 messages">
+      <div class="row">
+        <div class="col m11 team-chat"><span><i class="fa fa-comment"></i></span><span>Team Chats  >> {{request.user}}</span></div>
+      </div>
+      <div class="row">
+        <div class="col s12 m3 team">
+          <h6 class="team-header">Team Members</h6>
+          {% for mem in profile %}
+            <div class="member">
+              <input class="tog" type="radio" name="mem" id="{{mem.user.username}}">
+              <div>
+                <label  for="{{mem.user.username}}" >{{ mem.user.username|capfirst }}</label>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col m8 chat">
+          <div class="unchecked">
+            <i class="fa fa-envelope"></i>
+            <p>Messages</p>
+          </div>
+            <ul id="msglist" class="msglist {{mem.user.username}}">
+              {% for obj in chat %}
+
+                {% if obj.sender == request.user %}
+                  <li class="right-msg">{{ obj.message }}</li>
+                  {% else%}
+                  <li class="left-msg"><div class="sender" data-pk={{obj.sender.id}}>{{ obj.sender}}</div>{{ obj.message }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          <div class="chat-input unchecked">
+            <form class="chat-form" method="post">
+              <input type="text" class="chat-box" placeholder="type something where..">
+              <div><i class="fa fa-paper-plane"></i><input type="submit" class="send" value="Send"></div>
+            </form>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 activities">
+              <div class="activity">
+                <div class="act-header"><i class="fa fa-puzzle-piece"></i><span>Activities</span></div>
+                <div class="act-content">
+                  <ul>
+                    {% for action in actions %}
+                    <li>
+                      <div class="act-img"><span class="fa fa-leaf"></span></div>
+                      <div>
+                        {% with user=action.user %}
+                        <p class="act-time right">{{ action.created|timesince }}ago</p>
+                        <p>
+                          {% if user == request.user %}
+                            <span>You</span>
+                           {% else %}
+                            <span>{{ user.username }}</span>
+                          {% endif %}
+                            {{ action.verb }}
+                           {% if action.target %}
+                             {% with target=action.target %}
+                               <a href="{% if target.blog %}{{ target.blog.get_absolute_url }}{% else %} {{target.get_absolute_url }}{% endif %}">"{{ target }}"</a>
+                             {% endwith %}
+                           {% endif %}
+                         </p>
+                        {% endwith %}
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m5 offset-m1 activities events">
+                <div class="events-head">
+                  <i class="fa fa-calendar"></i><span>Calendar</span>
+                  <div id="date" data-showToday="True">
+
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+  {% block extra-js %}
+  <script type="text/javascript" src="{% static 'js/zabuto_calendar.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+    <script type="text/javascript">
+      $("#date").zabuto_calendar({
+        showToday: true
+      });
+      var chatlist = document.getElementById('msglist');
+      chatlist.scrollTop = chatlist.scrollHeight
+    </script>
+  {% endblock %}

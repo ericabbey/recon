@@ -1,0 +1,123 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static  'fonts/font-awesome-4.4.0/css/font-awesome.min.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="banner parallax-container">
+      <h1>Blogs Detail</h1>
+      <div class="parallax">
+          <img class="" src="{% static 'images/wallpaper.jpg' %}" alt="">
+      </div>
+  </div>
+  <div class="container">
+        <div class="row">
+          <div class="col s12 m12 l12 blog-content">
+            <div class="blog-header">
+              <div class="blog-date">
+                <h3>{{ instance.timestamp|date:"jS"}}</h3>
+                <h3>{{ instance.timestamp|date:"F"}}</h3>
+                <h3>{{ instance.timestamp|date:"Y"}}</h3>
+              </div>
+              <div class="blog-img">
+                <img src="{{ instance.image.url }}" alt="">
+              </div>
+            </div>
+            <div class="blog-main">
+                <h5>{{ instance.title }}</h5>
+                <p>{{ instance.content }}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="blog-info" data-path="{{ path }}">
+              <span class="like"><span class="count">{{ instance.like_set.count }}</span> like{{ instance.like_set.count| pluralize }} </span>
+              <span> {{ instance.comment_set.count }} comment{{ instance.comment_set.count| pluralize }} </span>
+              <span> share &nbsp;<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+                              <i class="fa fa-facebook-square"></i>
+                           </a>
+					                 <a href="https://twitter.com/home?status={{instance.content|urlencode}} {{ request.build_absolute_uri }}">
+                              <i class="fa fa-twitter-square"></i>
+                           </a>
+					                 <a href="https://www.linkedin.com/shareArticle?mini=true&{{ request.build_absolute_uri }}&title={{instance.title}}&summary={{instance.content|urlencode}}&source={{ request.build_absolute_uri }}">
+                             <i class="fa fa-linkedin-square"></i>
+                           </a>
+					                 <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}">
+                              <i class="fa fa-google-plus-square"></i>
+                           </a>
+              </span>
+            <div class="divider"></div>
+            <div class="blog-extra">
+              {% if instance.comment_set.count is 0 %}
+                <h3 style="color: silver; text-align: center" >No comments yet</h3>
+              {% endif %}
+              {% for comment in instance.comment_set.all %}
+              <div class="comment-box">
+                  <div class="commenter-info">
+                    <div class="commenter-img">
+                      <img src="{% static 'images/flower1.jpg' %}" alt="">
+                    </div>
+                    <span>{{ comment.user.username}}</span>
+                    <span class="time">{{ comment.time|timesince }} ago</span>
+                  </div>
+                  <div class="divider"></div>
+                  <div class="commenter-main">
+                    <p>
+                      {{ comment.content }}
+                    </p>
+                  </div>
+              </div>
+              {% endfor %}
+              <div class="comment-in">
+                <div class="divider"></div>
+                <h4>Comment</h4>
+                <p>Login to continue</p>
+                <div class="face"><p>Facebook</p></div>
+                <div class="goog"><p>Google+</p></div>
+                <div class="divider"></div>
+                <form class="" action="" method="post" style="margin-bottom: 100px">{% csrf_token %}
+                  <div class="textbox" style="margin: 10px auto 0 auto;">
+                    <textarea cols="30"  id="id_content" name="content" rows="10"></textarea>
+                  </div>
+                  <input id="id_blog" name="blog" value="{{ instance }}" type="hidden">
+                  <div class="submit" style="display: block; margin-left: -3.5%;">
+                    <input type="submit" value="Post">
+                  </div>
+                </form>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+{% block extra-js %}
+  <script type="text/javascript">
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+           var cookie = jQuery.trim(cookies[i]);
+      if (cookie.substring(0, name.length + 1) == (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+         }
+        }
+      }
+     return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+    $(".like").click(function(){
+      $.ajax({
+       url : $(".big-info").attr("data-path"),
+       type: 'post',
+       data : { csrfmiddlewaretoken : csrftoken,
+               'blog-id' : {{ instance.id }},
+           },
+       success : function(data) {
+         console.log(data['count'])
+         $(".count").text(data['count'])
+       },
+     });
+    });
+  </script>
+{% endblock %}
